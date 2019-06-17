@@ -1,3 +1,5 @@
-# my_dockerphp72mysql57phpmyadmin
+# Laravel 5.6 criando API RESTFULL
 
-Docker File e Docker Composer  ambiente para desenvolvimento com servidor php 7.2 mysql 5.7 e phpmyadmin já configurados.
+Ferramentas utilizadas :
+*Docker File 
+*Docker Composer  configuração de ambiente para desenvolvimento com servidor php 7.2 mysql 5.7 e phpmyadmin já configurados.
