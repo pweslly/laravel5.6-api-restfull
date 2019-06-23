@@ -18,13 +18,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('products', function(){
-    $products =  \App\Product::all();
-    return \App\Http\Resources\ProductResource::collection($products);
-});
+// Vou criar um grupo de rotas para eu proteger
+Route::group(['middleware' => 'auth:api'], function (){
+    Route::get('products', function(){
+        $products =  \App\Product::all();
+        return \App\Http\Resources\ProductResource::collection($products);
+    });
+        Route::get('products/{product}', function(\App\Product $product){
+            return new \App\Http\Resources\ProductResource($product);        
+    });      
 
-Route::get('products/{product}', function(\App\Product $product){
-    return new \App\Http\Resources\ProductResource($product);
 });
 
 Route::post('login', function (Request $request) {
