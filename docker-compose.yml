@@ -9,49 +9,11 @@ services:
       - 8080:80
     volumes:
       - ./api/:/var/www/api
-      - ./api/public/:/var/www/api/public
-    environment:
-      - APP_NAME=laravel
-      - APP_ENV=local
-      - APP_KEY=base64:w5tqtUOwfHoRS2KDeuTS8j6RBBFVxNN89xA8D+odyac=
-      - APP_DEBUG=true
-      - DB_CONNECTION=mysql 
-      - DB_HOST=mysql_apivendas #vai com mesmo nome do serviço
-      - DB_PORT=3306
-      - DB_DATABASE=product
-      - DB_USERNAME=root
-      - DB_PASSWORD=apivendas
+      - ./api/public/:/var/www/api/public    
     networks:
       - imoveis_network
     restart: always  
     networks:
-      - apivendas_network
-
-  mysql_apivendas:
-    container_name: mysql_apivendas    
-    image: mysql:5.7
-    ports:
-      - 3306:3306
-    environment:
-      - MYSQL_ROOT_PASSWORD=apivendas 
-    volumes:
-      - ./mysql_data:/var/lib/mysql
-    restart: always  
-    networks:
       - apivendas_network  
-  
-  phpmyadmin_apivendas:
-    container_name: phpmyadmin_apivendas
-    image: phpmyadmin/phpmyadmin:latest
-    environment:
-      - PMA_HOST=mysql_apivendas 
-      - PMA_USER=root
-      - PMA_PASSWORD=apivendas
-    restart: always
-    ports:
-      - 8081:80
-    networks:
-     - apivendas_network  
-
 networks:
   apivendas_network:
